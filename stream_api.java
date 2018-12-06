@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,8 +32,31 @@ class StreamApi {
             // .sorted(Comparator.reverseOrder())
             .sorted()
             .distinct();
-        System.out.println();
-        stream.forEach(System.out::println);
+        // System.out.println();
+        // stream.forEach(System.out::println);
+
+        Stream<String> stream1 = Stream.of("she", "he", "we", "I");
+        stream1.forEach(s -> {
+            System.out.println(s + " is very nice");
+        });
+
+        // String [] array = {"a", "b", "c"};
+        // ArrayList<String> array1 = new ArrayList<>("d", "e");
+        // Stream<ArrayList<String>> = Stream.of(array1);
+        // stream2.forEach(System.out::println);
+
+        List<String> test = Arrays.asList("a", "b", "c");
+        List<String> a = new ArrayList<>();
+        for (String s: test){
+            a.add(s.toUpperCase());
+        }
+        System.out.println(test);
+        System.out.println(a);
+
+        List<String> collect = test.stream()
+                                    .map(String::toUpperCase)
+                                    .collect(Collectors.toList());
+        System.out.println(collect);
 
     }
 }
